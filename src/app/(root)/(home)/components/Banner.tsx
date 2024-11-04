@@ -5,13 +5,13 @@ import Image from 'next/image'
 const Banner = () => {
 	return (
 		<section className='section relative'>
-			<div className='container flex flex-col-reverse md:flex-row items-center gap-5'>
+			<div className='container flex justify-between flex-col-reverse md:flex-row gap-5'>
 				{/* left side */}
-				<div className='w-full md:w-1/2 flex flex-col gap-[25px] mt-2 md:mt-0'>
+				<div className='w-full  flex flex-col gap-[25px] mt-2 md:mt-0'>
 					<div className='text-center md:text-start'>
 						<Tag>Tezkor Yetkazish</Tag>
 					</div>
-					<h1 className='text-xl sm:text-2xl text-center md:text-start md:text-[36px] lg:text-[48px] font-bold md:leading-[45px] lg:leading-[55px]'>
+					<h1 className='text-3xl  text-center md:text-start md:text-[36px] lg:text-[48px] font-bold md:leading-[45px] lg:leading-[55px]'>
 						Discover Your Favourite Food and{' '}
 						<span className='text-primary'>Test Forever</span>
 					</h1>
@@ -25,7 +25,7 @@ const Banner = () => {
 					</div>
 				</div>
 				{/* right side */}
-				<div className='w-full md:w-1/2 flex justify-center items-center p-4'>
+				<div className='w-full  flex justify-center md:justify-end items-center'>
 					<Image
 						width={500}
 						height={500}
