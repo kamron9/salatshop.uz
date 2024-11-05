@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 const Banner = () => {
 	return (
-		<section className='section relative'>
+		<section className='main-section section relative'>
 			<div className='container flex justify-between flex-col-reverse md:flex-row gap-5'>
 				{/* left side */}
 				<div className='w-full  flex flex-col gap-[25px] mt-2 md:mt-0'>
