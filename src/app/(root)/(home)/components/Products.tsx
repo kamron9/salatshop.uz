@@ -16,7 +16,7 @@ const Products = async () => {
 	}
 	return (
 		<div className='section container'>
-			<div className='flex flex-col items-center mb-[81px]'>
+			<div className='flex flex-col items-center mb-8'>
 				<div>
 					<SectionTitle title='Our Delicious Dish' />
 				</div>

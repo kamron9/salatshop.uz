@@ -27,7 +27,7 @@ const ProductCard: FC<IProduct> = ({
 				<p className='line-clamp-2 text-sm text-lead'>{description}</p>
 			</div>
 			<div className='flex items-center justify-between gap-1'>
-				<span className='text-[12px] sm:text-base'>
+				<span className='text-sm sm:text-base'>
 					{price.toLocaleString('ru-RU')} so'm
 				</span>
 				<div className='flex gap-1'>
