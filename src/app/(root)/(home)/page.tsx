@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<div className='relative'>
 			<Banner />
-			<div className='bg-white'>
+			<div className='bg-white pb-[100px]'>
 				<Delivery />
 				<Products />
 			</div>
