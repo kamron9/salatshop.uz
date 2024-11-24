@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Target = () => {
 	return (
-		<section className='section'>
+		<section className='section pb-20'>
 			<div className='container flex flex-col sm:flex-row items-center gap-[20px] '>
 				<div className='w-full sm:w-1/2'>
 					<Image

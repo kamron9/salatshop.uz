@@ -1,8 +1,21 @@
+'use client'
 import Button from '@/components/ui/Button'
 import Tag from '@/components/ui/Tag'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 const Banner = () => {
+	const [currentIndex, setCurrentIndex] = useState(0)
+	const images = ['/salad.png', '/salad2.png', '/salad3.png']
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentIndex(prev => prev + 1)
+		}, 3000)
+		return () => clearInterval(interval)
+	}, [images.length])
+	console.log('currentIndex', currentIndex)
+
 	return (
 		<section className='main-section section relative'>
 			<div className='container flex justify-between flex-col-reverse md:flex-row gap-5'>
@@ -13,7 +26,7 @@ const Banner = () => {
 					</div>
 					<h1 className='text-3xl  text-center md:text-start md:text-[36px] lg:text-[48px] font-bold md:leading-[45px] lg:leading-[55px]'>
 						Discover Your Favourite Food and{' '}
-						<span className='text-primary'>Test Forever</span>
+						<span className='text-primary slogan'>Test Forever</span>
 					</h1>
 					<p className='text-lead text-sm text-center md:text-start'>
 						Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -25,17 +38,22 @@ const Banner = () => {
 					</div>
 				</div>
 				{/* right side */}
-				<div className='w-full  flex justify-center md:justify-end items-center'>
-					<Image
-						width={500}
-						height={500}
-						draggable={false}
-						priority
-						src='/image-slug.png'
-						alt='slug-image'
-						className='w-full md:w-1/2 -z-10 absolute right-0 top-0 h-full max-h-[350px] md:max-h-[400px] '
-					/>
-					<Image
+				<div className='w-full  overflow-hidden flex justify-center md:justify-end items-center'>
+					{images.map((image, index) => (
+						<Image
+							key={index}
+							width={400}
+							height={400}
+							draggable={false}
+							priority
+							src={image}
+							alt='salad.png'
+							className={`min-h-[350px] object-contain transition-all duration-500 ${
+								index === currentIndex ? 'block' : 'hidden'
+							}`}
+						/>
+					))}
+					{/* <Image
 						width={400}
 						height={400}
 						draggable={false}
@@ -43,7 +61,7 @@ const Banner = () => {
 						src={'/salad.png'}
 						alt='salad.png'
 						className='min-h-[350px] object-contain'
-					/>
+					/> */}
 				</div>
 			</div>
 		</section>

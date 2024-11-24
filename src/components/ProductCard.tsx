@@ -16,6 +16,7 @@ const ProductCard: FC<IProduct> = ({
 					src={image}
 					alt={title}
 					width={134}
+					priority
 					height={134}
 					className='w-[100px] h-[100px] sm:w-[134px] sm:h-[134px] object-cover rounded-full'
 				/>

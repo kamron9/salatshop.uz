@@ -15,10 +15,10 @@ const config: Config = {
 			colors: {
 				background: 'var(--background)',
 				foreground: 'var(--foreground)',
-				primary: '#FFC12F ',
-				active: '#FCC647',
+				primary: '#588157',
+				active: '#3a5a40',
 				lightOrange: '#FFFBF3 ',
-				buttonLight: '#FFF2D4',
+				buttonLight: '#dad7cd',
 				lead: '#667085',
 				title: 'var(--title-color)',
 				blue: '#335DFF',
