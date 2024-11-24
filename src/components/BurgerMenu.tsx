@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import ActiveLink from './ActiveLink'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const BurgerMenu = () => {
 	const [isOpen, setIsOpen] = useState(false)
@@ -34,12 +35,15 @@ const BurgerMenu = () => {
 					isOpen ? 'w-[300px] opacity-100' : 'w-0 opacity-0'
 				}`}
 			>
-				<ul className='flex flex-col items-center  gap-3'>
+				<ul className='flex flex-col items-center  gap-3 mt-[100px]'>
 					<ActiveLink href='/'>Asosiy</ActiveLink>
 					<ActiveLink href='/about'>Biz haqimizda</ActiveLink>
 					<ActiveLink href='/menu'>Menu</ActiveLink>
 					<ActiveLink href='/contact'>Bog'lanish</ActiveLink>
 				</ul>
+				<div className='flex justify-center mt-5'>
+					<LanguageSwitcher />
+				</div>
 			</nav>
 		</>
 	)

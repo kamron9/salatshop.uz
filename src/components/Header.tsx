@@ -13,16 +13,16 @@ const Header = () => {
 					Salat<span className='text-primary'>shop</span>
 				</Link>
 				<div className='flex items-center gap-8'>
-					<nav className='hidden md:flex gap-8 '>
+					<nav className='hidden md:flex gap-4 lg:gap-8 '>
 						{navbar.map((item, index) => (
 							<ActiveLink key={index} href={item.path}>
 								{item.title}
 							</ActiveLink>
 						))}
 					</nav>
-					<div className='flex items-center gap-2'>
+					<div className='flex items-center gap-4'>
 						<Link href={'/cart'}>
-							<button className='flex gap-2 bg-primary text-white px-4 py-1 rounded-2xl'>
+							<button className='flex gap-2 bg-primary text-white px-4 h-[32px] items-center rounded-2xl'>
 								<Image
 									src={'/cart.svg'}
 									alt='cart-icon'
@@ -32,7 +32,9 @@ const Header = () => {
 								| <span>0</span>
 							</button>
 						</Link>
-						<LanguageSwitcher />
+						<div className='hidden md:block'>
+							<LanguageSwitcher />
+						</div>
 						{/* burger menu */}
 
 						<BurgerMenu />
