@@ -9,7 +9,7 @@ const Target = () => {
 			<div className='container flex flex-col sm:flex-row items-center gap-[20px] '>
 				<div className='w-full sm:w-1/2'>
 					<Image
-						src={'/fast-delivery.svg'}
+						src={'/delivery3.png'}
 						alt='fast-delivery'
 						width={500}
 						height={300}
@@ -18,22 +18,23 @@ const Target = () => {
 				</div>
 				<div className='w-full sm:w-1/2 flex flex-col gap-5 items-center'>
 					<div>
-						<Tag>Our Target</Tag>
+						<Tag>Biznning maqsad</Tag>
 					</div>
-					<SectionTitle title='We Earn Your Trust and are Diligent in Your Case' />
-					<p className='text-lead'>
-						When an unknown printer took a galley of type and scrambled it to
-						make a type specimen book. It has survived not only five centuries,
-						but also the leap into electronic typesetting,
-					</p>
+					<SectionTitle title='Ishonchingizni qozonamiz va sifatli xizmat ko’rsatamiz' />
 					<p className='text-lead text-sm'>
-						It was popularised in the 1960s with the release of Letraset sheets
-						containing Lorem Ipsum passages, and more recently with desktop
-						publishing software like Aldus PageMaker including versions of Lorem
-						Ipsum.
+						Biz sizning buyurtmalaringizni imkon qadar qisqa vaqt ichida
+						yetkazib berishga intilamiz. Sifatli salatlar va tezkor xizmat –
+						bizning ustuvorligimiz!
 					</p>
+					<p className='text-lead'>
+						Salatlar yetkazib berish bo’yicha xizmatimiz bilan sizning
+						kuningizni osonlashtirishga intilamiz. Har bir buyurtma biz uchun
+						muhim va mijozlarimizga eng yaxshi tajribani taqdim etamiz. Faqat
+						yangi mahsulotlar va ehtiyotkorlik bilan tayyorlangan salatlar!
+					</p>
+
 					<div>
-						<Button>Order now</Button>
+						<Button>Hozir buyurtma bering</Button>
 					</div>
 				</div>
 			</div>
