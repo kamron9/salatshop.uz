@@ -9,7 +9,7 @@ const Menu = async () => {
 	return (
 		<section className='container py-5'>
 			<div className='flex items-center justify-between mb-4 gap-4'>
-				<span className='text-xl font-bold'>Menu</span>
+				<span className='text-2xl md:text-4xl font-bold'>Menu</span>
 				<Search />
 			</div>
 			<div className='grid grid-cols-2 lg:grid-cols-4 gap-[25px]'>

@@ -17,7 +17,7 @@ const AboutCompany = () => {
 						qulay qilamiz. Bugun buyurtma bering va yangi ta’m dunyosini kashf
 						eting!
 					</p>
-					<button className='inline-block bg-transparent border border-primary  text-primary font-semibold px-6 py-3 rounded-full shadow-md hover:bg-gray-100 transition'>
+					<button className='inline-block bg-transparent border border-primary  text-primary font-semibold px-6 py-3 rounded-full shadow-md '>
 						Bog'lanish
 					</button>
 				</div>
