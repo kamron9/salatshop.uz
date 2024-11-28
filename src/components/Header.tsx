@@ -7,7 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher'
 
 const Header = () => {
 	return (
-		<header className=' h-[var(--header-height)]  py-4'>
+		<header className='fixed header top-0 left-0 w-full z-20 h-[var(--header-height)] py-4'>
 			<div className='flex items-center justify-between container'>
 				<Link href={'/'} className='text-3xl font-bold logo'>
 					Salat<span className='text-primary'>shop</span>
@@ -22,7 +22,7 @@ const Header = () => {
 					</nav>
 					<div className='flex items-center gap-4'>
 						<Link href={'/cart'}>
-							<button className='flex gap-2 bg-primary text-white px-4 h-[32px] items-center rounded-2xl'>
+							<button className='flex gap-2 bg-active text-white px-4 h-[32px] items-center rounded-2xl'>
 								<Image
 									src={'/cart.svg'}
 									alt='cart-icon'

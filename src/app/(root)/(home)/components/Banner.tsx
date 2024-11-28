@@ -2,20 +2,8 @@
 import Button from '@/components/ui/Button'
 import Tag from '@/components/ui/Tag'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
 
 const Banner = () => {
-	const [currentIndex, setCurrentIndex] = useState(0)
-	const images = ['/salad.png', '/salad2.png', '/salad3.png']
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			setCurrentIndex(prev => prev + 1)
-		}, 3000)
-		return () => clearInterval(interval)
-	}, [images.length])
-	console.log('currentIndex', currentIndex)
-
 	return (
 		<section className='main-section section relative'>
 			<div className='container flex justify-between flex-col-reverse md:flex-row gap-5'>
@@ -39,21 +27,7 @@ const Banner = () => {
 				</div>
 				{/* right side */}
 				<div className='w-full  overflow-hidden flex justify-center md:justify-end items-center'>
-					{images.map((image, index) => (
-						<Image
-							key={index}
-							width={400}
-							height={400}
-							draggable={false}
-							priority
-							src={image}
-							alt='salad.png'
-							className={`min-h-[350px] object-contain transition-all duration-500 ${
-								index === currentIndex ? 'block' : 'hidden'
-							}`}
-						/>
-					))}
-					{/* <Image
+					<Image
 						width={400}
 						height={400}
 						draggable={false}
@@ -61,7 +35,7 @@ const Banner = () => {
 						src={'/salad.png'}
 						alt='salad.png'
 						className='min-h-[350px] object-contain'
-					/> */}
+					/>
 				</div>
 			</div>
 		</section>
