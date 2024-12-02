@@ -1,12 +1,19 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const ShareButton = ({ isPage = false }: { isPage?: boolean }) => {
 	const [open, setOpen] = useState(false)
-	const productUrl = window.location.href
-	const productTitle = document.title
+	const [isClient, setIsClient] = useState(false)
+	const [productUrl, setProductUrl] = useState('')
+	const [productTitle, setProductTitle] = useState('')
+
+	useEffect(() => {
+		setIsClient(true)
+		setProductUrl(window.location.href)
+		setProductTitle(document.title)
+	}, [])
 
 	const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(
 		productUrl
@@ -18,22 +25,27 @@ const ShareButton = ({ isPage = false }: { isPage?: boolean }) => {
 	}
 
 	const handleShareTg = () => {
-		let shareUrl = telegramUrl
-		window.open(shareUrl, '_blank')
+		if (isClient) {
+			window.open(telegramUrl, '_blank')
+		}
 	}
+
 	const copyText = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
 		let element = e.target as HTMLButtonElement
-		navigator.clipboard
-			.writeText(productUrl)
-			.then(() => {
-				element.textContent = 'Nusxalandi ✅'
-				setTimeout(() => {
-					setOpen(false)
-				}, 2000)
-			})
-			.catch(err => console.log('Nusxalashda xato yuz berdi.'))
+		if (isClient) {
+			navigator.clipboard
+				.writeText(productUrl)
+				.then(() => {
+					element.textContent = 'Nusxalandi ✅'
+					setTimeout(() => {
+						setOpen(false)
+					}, 2000)
+				})
+				.catch(err => console.log('Nusxalashda xato yuz berdi.', err))
+		}
 	}
+
 	return (
 		<div className='relative'>
 			{open && (
