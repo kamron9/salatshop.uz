@@ -5,22 +5,41 @@ import { Metadata } from 'next'
 import Image from 'next/image'
 
 interface Params {
-	id: string
+	params: Promise<{ id: string }>
 }
 
-export const generateMetadata = async ({
-	params,
-}: {
-	params: Params
-}): Promise<Metadata> => {
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+	const id = (await params).id
+
+	const product = await getSingleProduct(Number(id))
+
 	return {
-		title: `Single Product ${params.id}`,
-		description: `Single Product ${params.id}`,
+		title: product.title,
+		description: product.description,
+		openGraph: {
+			title: product.title,
+			description: product.description,
+			images: [
+				{
+					url: product.image,
+					width: 800,
+					height: 600,
+					alt: product.title,
+				},
+			],
+		},
+		twitter: {
+			card: 'summary_large_image',
+			title: product.title,
+			description: product.description,
+			images: [product.image],
+		},
 	}
 }
-const SingleProduct = async ({ params }: { params: Params }) => {
-	const product = (await getSingleProduct(Number(params.id))) as IProduct
+const SingleProduct = async ({ params }: Params) => {
+	const id = (await params).id
 
+	const product = (await getSingleProduct(Number(id))) as IProduct
 	return (
 		<>
 			<div className='container py-4'>
@@ -40,8 +59,8 @@ const SingleProduct = async ({ params }: { params: Params }) => {
 						<span className='text-bold'>
 							{product.price.toLocaleString('ru-Ru')} so'm
 						</span>
-						<div className='flex items-center gap-3'>
-							<button className='bg-red flex items-center gap-2 px-3 py-1 rounded-md text-white'>
+						<div className='flex  gap-3'>
+							<button className='bg-red flex items-center gap-2 px-2 py-1 rounded-md text-white'>
 								<Image
 									src={'/cart.svg'}
 									width={20}
@@ -50,7 +69,7 @@ const SingleProduct = async ({ params }: { params: Params }) => {
 								/>
 								<span>Savatga qo'shish</span>
 							</button>
-							<button className='bg-dark flex items-center gap-2 px-3 py-1 rounded-md text-white'>
+							{/* <button className='bg-dark flex items-center gap-2 px-3 py-1 rounded-md text-white'>
 								<Image
 									src={'/share.svg'}
 									width={15}
@@ -58,8 +77,8 @@ const SingleProduct = async ({ params }: { params: Params }) => {
 									alt='share-icon'
 								/>
 								<span>Ulashish</span>
-							</button>
-							<ShareButton />
+							</button> */}
+							<ShareButton isPage />
 						</div>
 					</div>
 				</div>

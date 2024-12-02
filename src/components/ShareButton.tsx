@@ -1,82 +1,81 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 
-const ShareButton = () => {
+const ShareButton = ({ isPage = false }: { isPage?: boolean }) => {
+	const [open, setOpen] = useState(false)
 	const productUrl = window.location.href
 	const productTitle = document.title
 
-	// Ijtimoiy tarmoqlarga ulanish uchun URL’lar
-	const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-		productUrl
-	)}`
-	const instagramUrl = `https://www.instagram.com/?url=${encodeURIComponent(
-		productUrl
-	)}`
 	const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(
 		productUrl
 	)}&text=${encodeURIComponent(productTitle)}`
 
-	const handleShare = (platform: string) => {
-		let shareUrl
-		if (platform === 'facebook') {
-			shareUrl = facebookUrl
-		} else if (platform === 'instagram') {
-			shareUrl = instagramUrl
-		} else if (platform === 'telegram') {
-			shareUrl = telegramUrl
-		}
+	const handleShare = (e: React.MouseEvent<HTMLButtonElement>) => {
+		setOpen(!open)
+		e.preventDefault()
+	}
+
+	const handleShareTg = () => {
+		let shareUrl = telegramUrl
 		window.open(shareUrl, '_blank')
 	}
-	const copyText = () => {
+	const copyText = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault()
+		let element = e.target as HTMLButtonElement
 		navigator.clipboard
 			.writeText(productUrl)
 			.then(() => {
-				console.log('success')
+				element.textContent = 'Nusxalandi ✅'
+				setTimeout(() => {
+					setOpen(false)
+				}, 2000)
 			})
 			.catch(err => console.log('Nusxalashda xato yuz berdi.'))
 	}
 	return (
-		<>
-			<div className='bg-white px-3 py-1 shadow-xl border border-gray rounded-md'>
-				<div className='flex items-center gap-2'>
-					<Image
-						src={'/share-facebook.svg'}
-						alt='facebook'
-						width={40}
-						height={40}
-						onClick={() => handleShare('facebook')}
-						className='cursor-pointer'
-					/>
-					<Image
-						src={'/share-instagram.svg'}
-						width={40}
-						height={40}
-						alt='instagram'
-						onClick={() => handleShare('instagram')}
-						className='cursor-pointer'
-					/>
+		<div className='relative'>
+			{open && (
+				<div className='bg-white px-3 py-1 shadow-xl border border-gray rounded-md absolute -bottom-24 z-[9999]'>
+					<div className='flex items-center justify-between'>
+						<Image
+							src={'/share-telegram.svg'}
+							alt='telegram'
+							width={40}
+							height={40}
+							onClick={handleShareTg}
+							className='cursor-pointer'
+						/>
+						<span
+							onClick={() => setOpen(false)}
+							className='text-2xl cursor-pointer'
+						>
+							&times;
+						</span>
+					</div>
+					<div className='flex items-center gap-1'>
+						<span>{productUrl}</span>
+						<button
+							onClick={copyText}
+							className='px-2 py-1 rounded-md border border-gray text-nowrap'
+						>
+							Nusxalash 🔗
+						</button>
+					</div>
+				</div>
+			)}
 
-					<Image
-						src={'/share-telegram.svg'}
-						alt='telegram'
-						width={40}
-						height={40}
-						onClick={() => handleShare('telegram')}
-						className='cursor-pointer'
-					/>
-				</div>
-				<div className='flex items-center gap-1'>
-					<span>{productUrl}</span>
-					<button
-						onClick={copyText}
-						className='px-2 py-1 rounded-md border border-gray'
-					>
-						Nusxalash
-					</button>
-				</div>
-			</div>
-		</>
+			<button
+				onClick={handleShare}
+				className={`bg-dark flex items-center justify-center  gap-2  rounded-md text-white ${
+					isPage ? 'px-2 py-1' : 'w-[28px] h-[28px]'
+				}`}
+			>
+				<Image src={'/share.svg'} width={16} height={16} alt='share-icon' />
+				{isPage && <span>Ulashish</span>}
+			</button>
+		</div>
 	)
 }
 

@@ -1,7 +1,9 @@
+'use client'
 import { IProduct } from '@/shared/interface'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FC } from 'react'
+import ShareButton from './ShareButton'
 
 const ProductCard: FC<IProduct> = ({
 	description,
@@ -10,6 +12,9 @@ const ProductCard: FC<IProduct> = ({
 	title,
 	id,
 }) => {
+	const addToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault()
+	}
 	return (
 		<Link href={`/menu/${id}`}>
 			<div className='border border-gray p-2 sm:p-[20px] rounded-md w-full h-full flex flex-col justify-between gap-3'>
@@ -33,8 +38,11 @@ const ProductCard: FC<IProduct> = ({
 					<span className='text-sm sm:text-base'>
 						{price.toLocaleString('ru-RU')} so'm
 					</span>
-					<div className='flex gap-1 bg-green'>
-						<button className='flex  items-center justify-center rounded-md bg-red w-[28px] h-[28px]'>
+					<div className='flex gap-1 relative z-10'>
+						<button
+							onClick={addToCart}
+							className='flex  items-center justify-center rounded-md bg-red w-[28px] h-[28px]'
+						>
 							<Image
 								src={'/basket.svg'}
 								width={20}
@@ -42,14 +50,7 @@ const ProductCard: FC<IProduct> = ({
 								alt='basket-icon'
 							/>
 						</button>
-						<button className='flex  items-center justify-center rounded-md bg-dark w-[28px] h-[28px]'>
-							<Image
-								src={'/share.svg'}
-								width={16}
-								height={16}
-								alt='basket-icon'
-							/>
-						</button>
+						<ShareButton />
 					</div>
 				</div>
 			</div>
