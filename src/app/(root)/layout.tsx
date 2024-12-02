@@ -1,5 +1,6 @@
 import Footer from '@/components/Footer'
 import Header from '@/components/Header'
+import Toast from '@/components/ui/Toast'
 import type { Metadata } from 'next'
 import './globals.css'
 
@@ -17,7 +18,10 @@ export default function RootLayout({
 		<html lang='en'>
 			<body>
 				<Header />
-				<main className='main'>{children}</main>
+				<main className='main'>
+					{children}
+					<Toast />
+				</main>
 				<Footer />
 			</body>
 		</html>
