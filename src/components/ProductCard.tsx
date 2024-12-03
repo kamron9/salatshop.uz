@@ -18,7 +18,7 @@ const ProductCard: FC<IProduct> = ({
 
 	return (
 		<Link href={`/menu/${id}`}>
-			<div className='border border-gray p-2 sm:p-[20px] rounded-md w-full h-full flex flex-col justify-between gap-3'>
+			<div className='border bg-white border-gray p-2 sm:p-[20px] rounded-md w-full h-full flex flex-col justify-between gap-3'>
 				<div className='flex justify-center'>
 					<Image
 						src={image}
