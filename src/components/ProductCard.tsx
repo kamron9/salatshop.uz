@@ -15,6 +15,7 @@ const ProductCard: FC<IProduct> = ({
 	const addToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
 	}
+
 	return (
 		<Link href={`/menu/${id}`}>
 			<div className='border border-gray p-2 sm:p-[20px] rounded-md w-full h-full flex flex-col justify-between gap-3'>
@@ -50,7 +51,7 @@ const ProductCard: FC<IProduct> = ({
 								alt='basket-icon'
 							/>
 						</button>
-						<ShareButton />
+						<ShareButton productId={id} />
 					</div>
 				</div>
 			</div>

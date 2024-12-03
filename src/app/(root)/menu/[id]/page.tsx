@@ -78,16 +78,7 @@ const SingleProduct = async ({ params }: Params) => {
 									/>
 									<span>Savatga qo'shish</span>
 								</button>
-								{/* <button className='bg-dark flex items-center gap-2 px-3 py-1 rounded-md text-white'>
-								<Image
-									src={'/share.svg'}
-									width={15}
-									height={15}
-									alt='share-icon'
-								/>
-								<span>Ulashish</span>
-							</button> */}
-								<ShareButton isPage />
+								<ShareButton isPage productId={product.id} />
 							</div>
 						</div>
 					</div>
@@ -97,7 +88,7 @@ const SingleProduct = async ({ params }: Params) => {
 	} catch (error) {
 		return (
 			<div>
-				<div className='container py-4'>
+				<div className='container py-4 '>
 					<div className='flex bg-white p-16 rounded-md gap-16'>
 						Product not found
 					</div>
