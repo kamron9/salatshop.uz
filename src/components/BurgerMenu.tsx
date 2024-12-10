@@ -32,7 +32,7 @@ const BurgerMenu = () => {
 			</button>
 
 			<aside
-				className={`fixed block mobile-menu w-[350px]  right-0 z-30 transition-all duration-300 ease-in-out pt-[100px]   ${
+				className={`fixed block mobile-menu w-[350px] right-0 z-30 transition-all duration-300 ease-in-out pt-[100px]   ${
 					isOpen ? 'translate-x-0 ' : 'translate-x-full'
 				}`}
 			>

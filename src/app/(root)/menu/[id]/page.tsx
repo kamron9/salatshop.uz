@@ -57,7 +57,7 @@ const SingleProduct = async ({ params }: Params) => {
 		const product = (await getSingleProduct(Number(id))) as IProduct
 		return (
 			<>
-				<div className='container py-4'>
+				<div className='container section '>
 					<div className='flex flex-col md:flex-row bg-white p-8 md:p-16 rounded-md gap-4 md:gap-16'>
 						<div>
 							<Image
@@ -69,7 +69,7 @@ const SingleProduct = async ({ params }: Params) => {
 							/>
 						</div>
 						<div className='flex flex-col gap-3'>
-							<h1 className='text-2xl md:text-4xl font-bold'>
+							<h1 className='text-2xl lg:text-4xl font-bold'>
 								{product.title}
 							</h1>
 							<p className='text-lead max-w-[500px]'>{product.description}</p>

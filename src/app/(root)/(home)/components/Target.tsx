@@ -2,6 +2,7 @@ import Button from '@/components/ui/Button'
 import SectionTitle from '@/components/ui/SectionTitle'
 import Tag from '@/components/ui/Tag'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Target = () => {
 	return (
@@ -34,7 +35,9 @@ const Target = () => {
 					</p>
 
 					<div>
-						<Button>Hozir buyurtma bering</Button>
+						<Link href={'/menu'}>
+							<Button>Hozir buyurtma bering</Button>
+						</Link>
 					</div>
 				</div>
 			</div>

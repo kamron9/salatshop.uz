@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 const AboutCompany = () => {
 	return (
@@ -17,9 +18,11 @@ const AboutCompany = () => {
 						qulay qilamiz. Bugun buyurtma bering va yangi ta’m dunyosini kashf
 						eting!
 					</p>
-					<button className='inline-block bg-transparent border border-primary  text-primary font-semibold px-6 py-3 rounded-full shadow-md '>
-						Bog'lanish
-					</button>
+					<Link href={'/contact'}>
+						<button className='inline-block bg-transparent border border-primary  text-primary font-semibold px-6 py-3 rounded-full shadow-md '>
+							Bog'lanish
+						</button>
+					</Link>
 				</div>
 
 				{/* Right Side - Image */}
